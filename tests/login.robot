@@ -1,15 +1,14 @@
 *** Settings ***
-Library    SeleniumLibrary
-Resource   ../page_objects/login_page.robot
+Resource    ../resources/browser_setup.robot
 
 *** Test Cases ***
-
 Valid Login
-    Open Browser    https://the-internet.herokuapp.com/login    chrome    options=add_argument("--headless")
+    Open Headless Browser
     Input Text    id:username    tomsmith
     Input Text    id:password    SuperSecretPassword!
-    Click Button    css:button.radius
+    Wait Until Page Contains    Secure Area    timeout=10s
     Page Should Contain    Secure Area
     Close Browser
+
 
 
