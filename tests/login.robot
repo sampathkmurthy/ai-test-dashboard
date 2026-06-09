@@ -6,7 +6,8 @@ Valid Login
     Open Headless Browser
     Input Text    id:username    tomsmith
     Input Text    id:password    SuperSecretPassword!
-    Wait Until Page Contains    Secure Area    timeout=20s
+    Click Button    css:button.radius
+    Wait Until Page Contains Element    css:div.flash.success    timeout=30s
     Page Should Contain    Secure Area
     Close Browser
 
