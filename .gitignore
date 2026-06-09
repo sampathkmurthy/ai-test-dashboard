@@ -1,15 +1,17 @@
-# Python
+# Python bytecode and cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.log
-*.sqlite3
 
 # Virtual environments
 venv/
 env/
 .venv/
+
+# Logs and temporary files
+*.log
+*.tmp
 
 # Robot Framework outputs
 output.xml
@@ -24,6 +26,6 @@ log.html
 # VS Code settings
 .vscode/
 
-# OS files
+# OS-specific files
 .DS_Store
 Thumbs.db
