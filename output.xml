@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-09T22:25:06.686619" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\login.robot">
+<test id="s1-t1" name="Valid Login" line="6">
+<kw name="Open Login Page" owner="login_page">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-09T22:25:07.003327" level="INFO">Opening browser 'Chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-09T22:25:07.003072" elapsed="4.040962"/>
+</kw>
+<status status="PASS" start="2026-06-09T22:25:07.002278" elapsed="4.042027"/>
+</kw>
+<kw name="Enter Username" owner="login_page">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-09T22:25:11.046850" level="INFO">Typing text 'tomsmith' into text field 'id:username'.</msg>
+<arg>id:username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-09T22:25:11.045852" elapsed="0.122555"/>
+</kw>
+<arg>tomsmith</arg>
+<status status="PASS" start="2026-06-09T22:25:11.045123" elapsed="0.123469"/>
+</kw>
+<kw name="Enter Password" owner="login_page">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-09T22:25:11.169937" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id:password'.</msg>
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-09T22:25:11.169530" elapsed="0.104614"/>
+</kw>
+<arg>SuperSecretPassword!</arg>
+<status status="PASS" start="2026-06-09T22:25:11.169040" elapsed="0.106245"/>
+</kw>
+<kw name="Submit Login" owner="login_page">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-09T22:25:11.276736" level="INFO">Clicking button 'css:button.radius'.</msg>
+<arg>css:button.radius</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-09T22:25:11.276393" elapsed="0.588105"/>
+</kw>
+<status status="PASS" start="2026-06-09T22:25:11.275942" elapsed="0.588736"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-09T22:25:11.880466" level="INFO">Current page contains text 'Secure Area'.</msg>
+<arg>Secure Area</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-09T22:25:11.865036" elapsed="0.015585"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-09T22:25:11.881276" elapsed="2.159943"/>
+</kw>
+<status status="PASS" start="2026-06-09T22:25:07.001522" elapsed="7.040189"/>
+</test>
+<status status="PASS" start="2026-06-09T22:25:06.688988" elapsed="7.353472"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login" id="s1" pass="1" fail="0" skip="0">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
