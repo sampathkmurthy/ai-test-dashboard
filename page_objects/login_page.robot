@@ -7,7 +7,7 @@ ${BROWSER}    Chrome
 
 *** Keywords ***
 Open Login Page
-    Open Browser    ${URL}    ${BROWSER}
+    Open Browser    ${URL}    ${BROWSER}    options=add_argument(--headless)
 
 Enter Username
     [Arguments]    ${username}
