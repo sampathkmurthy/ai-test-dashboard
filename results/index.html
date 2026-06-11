@@ -3,55 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>AI Test Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f4f6f8;
-      color: #333;
-    }
-    header {
-      background: #2c3e50;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav {
-      width: 200px;
-      background: #34495e;
-      position: fixed;
-      top: 0; bottom: 0; left: 0;
-      padding-top: 2rem;
-    }
-    nav a {
-      display: block;
-      color: #fff;
-      padding: 0.8rem 1rem;
-      text-decoration: none;
-    }
-    nav a:hover {
-      background: #1abc9c;
-    }
-    main {
-      margin-left: 220px;
-      padding: 2rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 6px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-top: 0;
-    }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f6f8; color:#333; }
+    header { background:#2c3e50; color:#fff; padding:1rem; text-align:center; }
+    nav { width:200px; background:#34495e; position:fixed; top:0; bottom:0; left:0; padding-top:2rem; }
+    nav a { display:block; color:#fff; padding:0.8rem 1rem; text-decoration:none; }
+    nav a:hover { background:#1abc9c; }
+    main { margin-left:220px; padding:2rem; }
+    .card { background:#fff; border-radius:6px; padding:1rem; margin-bottom:1.5rem; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
+    h2 { margin-top:0; }
+    canvas { max-width:800px; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>AI Test Dashboard</h1>
-  </header>
+  <header><h1>AI Test Dashboard</h1></header>
   <nav>
     <a href="report.html">📊 Test Report</a>
     <a href="log.html">📜 Test Log</a>
@@ -62,14 +28,60 @@
       <p>Consecutive days of successful test runs: <strong>5</strong></p>
     </div>
     <div class="card">
-      <h2>Charts</h2>
-      <p>(Placeholder for charts — you can embed static images or JavaScript chart libraries here.)</p>
+      <h2>Latest Pass/Fail</h2>
+      <canvas id="resultsChart"></canvas>
     </div>
     <div class="card">
-      <h2>Latest Results</h2>
-      <p>Click the sidebar links to view detailed reports and logs.</p>
+      <h2>Trend Over Time</h2>
+      <canvas id="trendChart"></canvas>
     </div>
   </main>
+
+  <!-- Load dynamically generated test results -->
+  <script src="chart-data.js"></script>
+  <script>
+    // Latest results bar chart
+    const ctx = document.getElementById('resultsChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Pass', 'Fail'],
+        datasets: [{
+          label: 'Latest Run',
+          data: [testResults.passed, testResults.failed],
+          backgroundColor: ['#2ecc71', '#e74c3c']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false }, title: { display: true, text: 'Test Run Summary' } }
+      }
+    });
+
+    // Trend line chart
+    fetch('history.json')
+      .then(response => response.json())
+      .then(history => {
+        const dates = history.map(h => h.date);
+        const passes = history.map(h => h.passed);
+        const fails = history.map(h => h.failed);
+
+        const ctx2 = document.getElementById('trendChart').getContext('2d');
+        new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: dates,
+            datasets: [
+              { label: 'Passes', data: passes, borderColor: '#2ecc71', fill: false },
+              { label: 'Fails', data: fails, borderColor: '#e74c3c', fill: false }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: { title: { display: true, text: 'Trend of Test Results Over Time' } }
+          }
+        });
+      });
+  </script>
 </body>
 </html>
-
