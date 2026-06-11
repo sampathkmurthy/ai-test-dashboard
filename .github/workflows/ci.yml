@@ -55,3 +55,23 @@ jobs:
           output.xml
           report.html
           log.html
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download reports artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: robot-reports
+        path: reports
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: reports          
