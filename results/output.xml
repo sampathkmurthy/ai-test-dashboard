@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-11T22:23:23.456226" rpa="false" schemaversion="5">
+<suite id="s1" name="My-Robot-Project" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project">
+<suite id="s1-s1" name="Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests">
+<suite id="s1-s1-s1" name="Form" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\form.robot">
+<test id="s1-s1-s1-t1" name="Submit Demo Web Form" line="5">
+<kw name="Open Headless Browser" owner="keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-11T22:23:23.746473" level="INFO">Opening browser 'chrome' to base url 'https://www.selenium.dev/selenium/web/web-form.html'.</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-11T22:23:23.745975" elapsed="1.391382"/>
+</kw>
+<arg>https://www.selenium.dev/selenium/web/web-form.html</arg>
+<status status="PASS" start="2026-06-11T22:23:23.744922" elapsed="1.392897"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T22:23:25.139553" level="INFO">Typing text 'John Doe' into text field 'name:my-text'.</msg>
+<arg>name:my-text</arg>
+<arg>John Doe</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.138276" elapsed="0.105958"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T22:23:25.245430" level="INFO">Typing text 'secret123' into text field 'name:my-password'.</msg>
+<arg>name:my-password</arg>
+<arg>secret123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.244802" elapsed="0.089671"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T22:23:25.336037" level="INFO">Typing text 'Hello, this is a test message.' into text field 'name:my-textarea'.</msg>
+<arg>name:my-textarea</arg>
+<arg>Hello, this is a test message.</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.335069" elapsed="0.075029"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>css:button</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.410602" elapsed="0.292564"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-11T22:23:25.704401" level="INFO">Clicking button 'css:button'.</msg>
+<arg>css:button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.703647" elapsed="0.108774"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Received!</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.812953" elapsed="0.029286"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-11T22:23:25.852085" level="INFO">Current page contains text 'Received!'.</msg>
+<arg>Received!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.842743" elapsed="0.009693"/>
+</kw>
+<kw name="Close Browser Session" owner="keywords">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-11T22:23:25.854292" elapsed="2.097475"/>
+</kw>
+<status status="PASS" start="2026-06-11T22:23:25.853263" elapsed="2.098879"/>
+</kw>
+<status status="PASS" start="2026-06-11T22:23:23.740866" elapsed="4.211714"/>
+</test>
+<status status="PASS" start="2026-06-11T22:23:23.499255" elapsed="4.458876"/>
+</suite>
+<status status="PASS" start="2026-06-11T22:23:23.494796" elapsed="4.467221"/>
+</suite>
+<status status="PASS" start="2026-06-11T22:23:23.461970" elapsed="4.503769"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="My-Robot-Project" id="s1" pass="1" fail="0" skip="0">My-Robot-Project</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">My-Robot-Project.Tests</stat>
+<stat name="Form" id="s1-s1-s1" pass="1" fail="0" skip="0">My-Robot-Project.Tests.Form</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
