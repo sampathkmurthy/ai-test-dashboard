@@ -1,57 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-09T23:50:59.911953" rpa="false" schemaversion="5">
-<suite id="s1" name="Login" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\login.robot">
-<test id="s1-t1" name="Valid Login" line="7">
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-11T21:51:59.140329" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests">
+<suite id="s1-s1" name="Form" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\form.robot">
+<test id="s1-s1-t1" name="Submit Demo Web Form" line="5">
+<kw name="Open Headless Browser" owner="keywords">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2026-06-09T23:51:00.231065" level="INFO">Opening browser 'chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<arg>https://the-internet.herokuapp.com/login</arg>
-<arg>chrome</arg>
-<arg>options=add_argument("--headless")</arg>
+<msg time="2026-06-11T21:51:59.464713" level="INFO">Opening browser 'chrome' to base url 'https://www.selenium.dev/selenium/web/web-form.html'.</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2026-06-09T23:51:00.230792" elapsed="4.997147"/>
+<status status="PASS" start="2026-06-11T21:51:59.464343" elapsed="1.583541"/>
+</kw>
+<arg>https://www.selenium.dev/selenium/web/web-form.html</arg>
+<status status="PASS" start="2026-06-11T21:51:59.463694" elapsed="1.584423"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-09T23:51:05.230399" level="INFO">Typing text 'tomsmith' into text field 'id:username'.</msg>
+<msg time="2026-06-11T21:52:01.049115" level="INFO">Typing text 'John Doe' into text field 'name:my-text'.</msg>
+<arg>name:my-text</arg>
+<arg>John Doe</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.048541" elapsed="0.095587"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T21:52:01.144842" level="INFO">Typing text 'secret123' into text field 'name:my-password'.</msg>
+<arg>name:my-password</arg>
+<arg>secret123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.144575" elapsed="0.070435"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T21:52:01.215666" level="INFO">Typing text 'Hello, this is a test message.' into text field 'name:my-textarea'.</msg>
+<arg>name:my-textarea</arg>
+<arg>Hello, this is a test message.</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.215387" elapsed="0.068959"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>css:button</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.284723" elapsed="0.302476"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-11T21:52:01.587819" level="INFO">Clicking button 'css:button'.</msg>
+<arg>css:button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.587546" elapsed="0.083643"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Received!</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.671859" elapsed="0.029384"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-11T21:52:01.710929" level="INFO">Current page contains text 'Received!'.</msg>
+<arg>Received!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.701771" elapsed="0.009280"/>
+</kw>
+<kw name="Close Browser Session" owner="keywords">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-11T21:52:01.711887" elapsed="2.121446"/>
+</kw>
+<status status="PASS" start="2026-06-11T21:52:01.711493" elapsed="2.122025"/>
+</kw>
+<status status="PASS" start="2026-06-11T21:51:59.462988" elapsed="4.371228"/>
+</test>
+<status status="PASS" start="2026-06-11T21:51:59.176002" elapsed="4.658975"/>
+</suite>
+<suite id="s1-s2" name="Login" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\login.robot">
+<test id="s1-s2-t1" name="Valid Login" line="5">
+<kw name="Open Headless Browser" owner="browser_setup">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-11T21:52:03.841323" level="INFO">Opening browser 'chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<arg>https://the-internet.herokuapp.com/login</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-11T21:52:03.841023" elapsed="4.551722"/>
+</kw>
+<status status="PASS" start="2026-06-11T21:52:03.840610" elapsed="4.552298"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T21:52:08.393606" level="INFO">Typing text 'tomsmith' into text field 'id:username'.</msg>
 <arg>id:username</arg>
 <arg>tomsmith</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-09T23:51:05.229163" elapsed="0.131303"/>
+<status status="PASS" start="2026-06-11T21:52:08.393246" elapsed="0.105007"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-09T23:51:05.362325" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id:password'.</msg>
+<msg time="2026-06-11T21:52:08.499117" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id:password'.</msg>
 <arg>id:password</arg>
 <arg>SuperSecretPassword!</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-09T23:51:05.361699" elapsed="0.115232"/>
+<status status="PASS" start="2026-06-11T21:52:08.498734" elapsed="0.080415"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-06-09T23:51:05.478363" level="INFO">Clicking button 'css:button.radius'.</msg>
+<msg time="2026-06-11T21:52:08.579721" level="INFO">Clicking button 'css:button.radius'.</msg>
 <arg>css:button.radius</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-09T23:51:05.477752" elapsed="0.117769"/>
+<status status="PASS" start="2026-06-11T21:52:08.579479" elapsed="0.559843"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:div.flash.success</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-11T21:52:09.139793" elapsed="0.010960"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2026-06-09T23:51:06.167566" level="INFO">Current page contains text 'Secure Area'.</msg>
+<msg time="2026-06-11T21:52:09.164515" level="INFO">Current page contains text 'Secure Area'.</msg>
 <arg>Secure Area</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2026-06-09T23:51:05.596280" elapsed="0.571509"/>
+<status status="PASS" start="2026-06-11T21:52:09.151177" elapsed="0.013483"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-06-09T23:51:06.168479" elapsed="2.177387"/>
+<status status="PASS" start="2026-06-11T21:52:09.164993" elapsed="2.118413"/>
 </kw>
-<status status="PASS" start="2026-06-09T23:51:00.229503" elapsed="8.117280"/>
+<status status="PASS" start="2026-06-11T21:52:03.840007" elapsed="7.444070"/>
 </test>
-<status status="PASS" start="2026-06-09T23:50:59.915506" elapsed="8.432694"/>
+<status status="PASS" start="2026-06-11T21:52:03.835613" elapsed="7.449246"/>
+</suite>
+<status status="PASS" start="2026-06-11T21:51:59.142222" elapsed="12.143614"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Login" id="s1" pass="1" fail="0" skip="0">Login</stat>
+<stat name="Tests" id="s1" pass="2" fail="0" skip="0">Tests</stat>
+<stat name="Form" id="s1-s1" pass="1" fail="0" skip="0">Tests.Form</stat>
+<stat name="Login" id="s1-s2" pass="1" fail="0" skip="0">Tests.Login</stat>
 </suite>
 </statistics>
 <errors>

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource   ../resources/keywords.robot
+Resource    ../keywords.robot
 
 *** Test Cases ***
 Submit Demo Web Form
@@ -7,8 +7,10 @@ Submit Demo Web Form
     Input Text    name:my-text       John Doe
     Input Text    name:my-password   secret123
     Input Text    name:my-textarea   Hello, this is a test message.
-    Click Button  css:button
-    Wait Until Page Contains    Received!    timeout=15s
-    Page Should Contain         Received!
+    Scroll Element Into View         css:button
+    Click Button                     css:button
+    Wait Until Page Contains         Received!    timeout=15s
+    Page Should Contain              Received!
     Close Browser Session
+
 
