@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: write      # allow pushing to gh-pages
+  pages: write         # allow publishing Pages
+  id-token: write      # required for OIDC authentication
+
 jobs:
   test:
     runs-on: ubuntu-latest
