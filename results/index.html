@@ -3,12 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <title>AI Test Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      width: 200px;
+      background: #34495e;
+      position: fixed;
+      top: 0; bottom: 0; left: 0;
+      padding-top: 2rem;
+    }
+    nav a {
+      display: block;
+      color: #fff;
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #1abc9c;
+    }
+    main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>AI Test Dashboard</h1>
-  <ul>
-    <li><a href="report.html">View Test Report</a></li>
-    <li><a href="log.html">View Test Log</a></li>
-  </ul>
+  <header>
+    <h1>AI Test Dashboard</h1>
+  </header>
+  <nav>
+    <a href="report.html">📊 Test Report</a>
+    <a href="log.html">📜 Test Log</a>
+  </nav>
+  <main>
+    <div class="card">
+      <h2>Streak Counter</h2>
+      <p>Consecutive days of successful test runs: <strong>5</strong></p>
+    </div>
+    <div class="card">
+      <h2>Charts</h2>
+      <p>(Placeholder for charts — you can embed static images or JavaScript chart libraries here.)</p>
+    </div>
+    <div class="card">
+      <h2>Latest Results</h2>
+      <p>Click the sidebar links to view detailed reports and logs.</p>
+    </div>
+  </main>
 </body>
 </html>
+
