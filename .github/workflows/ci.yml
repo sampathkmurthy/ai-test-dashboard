@@ -111,6 +111,7 @@ jobs:
 
         with open(history_file, "w") as f:
           json.dump(history, f)
+        EOF  
             
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
