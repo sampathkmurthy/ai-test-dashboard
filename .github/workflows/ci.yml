@@ -90,12 +90,17 @@ jobs:
           
     - name: Update history.json
       run: |
+        python - <<'EOF'
         import json, os, datetime, xml.etree.ElementTree as ET
+
+        # Parse Robot Framework output.xml
         root = ET.parse("results/output.xml").getroot()
         stats = root.find("statistics").find("total").find("stat")
         passed = int(stats.attrib["pass"])
         failed = int(stats.attrib["fail"])
         run_date = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        
+        #Load existing history.json if present
 
         history_file = "results/history.json"
         if os.path.exists(history_file):
@@ -110,7 +115,7 @@ jobs:
         history = history[-30:]
 
         with open(history_file, "w") as f:
-          json.dump(history, f)
+            json.dump(history, f)
         EOF  
             
     - name: Upload Pages artifact
