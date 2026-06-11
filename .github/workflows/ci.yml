@@ -73,12 +73,12 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: robot-reports
-        path: reports
+        path: results
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: reports
+        path: results
 
     - name: Deploy to GitHub Pages
       id: deployment
