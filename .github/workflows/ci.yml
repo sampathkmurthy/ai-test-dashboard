@@ -78,7 +78,7 @@ jobs:
     # ✅ Generate chart-data.js from output.xml
     - name: Generate chart data
       run: |
-        python - <<'EOF'
+        python - <<'PYCODE'
         import xml.etree.ElementTree as ET
         root = ET.parse("results/output.xml").getroot()
         stats = root.find("statistics").find("total").find("stat")
@@ -86,11 +86,11 @@ jobs:
         failed = int(stats.attrib["fail"])
         with open("results/chart-data.js", "w") as f:
             f.write(f"const testResults = {{ passed: {passed}, failed: {failed} }};")
-        EOF
-          
+        PYCODE
+
     - name: Update history.json
       run: |
-        python - <<'EOF'
+        python - <<'PYCODE'
         import json, os, datetime, xml.etree.ElementTree as ET
 
         # Parse Robot Framework output.xml
@@ -98,10 +98,9 @@ jobs:
         stats = root.find("statistics").find("total").find("stat")
         passed = int(stats.attrib["pass"])
         failed = int(stats.attrib["fail"])
-        run_date = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-        
-        #Load existing history.json if present
+        run_date = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d %H:%M:%S")
 
+        # Load existing history.json if present
         history_file = "results/history.json"
         if os.path.exists(history_file):
             with open(history_file) as f:
@@ -109,15 +108,17 @@ jobs:
         else:
             history = []
 
+        # Append new run
         history.append({"date": run_date, "passed": passed, "failed": failed})
 
         # ✅ Keep only the last 30 runs
         history = history[-30:]
 
+        # Save back
         with open(history_file, "w") as f:
             json.dump(history, f)
-        EOF  
-            
+        PYCODE
+      
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
       with:
