@@ -1,6 +1,6 @@
 *** Settings ***
 Library    utils.gpio_sim.GPIOSimulation    WITH NAME    GPIO
-Library    utils.uart_sim.UARTSimulation    WITH NAME    UART
+Library    Collections
 
 *** Test Cases ***
 Toggle GPIO Pin
@@ -12,16 +12,27 @@ Toggle GPIO Pin
     Should Be Equal As Integers    ${state}    0
 
 GPIO Interrupt Test
-    GPIO.Register Interrupt    5    Log Pin Change
+    ${events}=    Create List
+    GPIO.Register Interrupt    5    Keyword Callback    ${events}    debounce_ms=200    edge=both
     GPIO.Set High    5
     GPIO.Set Low     5
+    Sleep    0.2s    # allow async callback
+    Should Not Be Empty    ${events}
 
-UART Echo Test
-    UART.Send    HelloBoard
-    ${resp}=    UART.Receive
-    Should Be Equal    ${resp}    HelloBoard
+GPIO Interrupt With Debounce
+    ${events}=    Create List
+    GPIO.Register Interrupt    5    Keyword Callback    ${events}    debounce_ms=200    edge=both
+    GPIO.Set High    5
+    Sleep    0.05s
+    GPIO.Set Low     5
+    Sleep    0.05s
+    GPIO.Set High    5
+    Sleep    0.05s
+    Sleep    0.2s    # wait for callback
+    Length Should Be    ${events}    1
+    Should Contain    ${events[0]}    Pin 5 State 1
 
 *** Keywords ***
-Log Pin Change
-    [Arguments]    ${pin}    ${state}
-    Log    Interrupt: Pin ${pin} changed to ${state}    
+Keyword Callback
+    [Arguments]    ${events}    ${pin}    ${state}
+    Append To List    ${events}    Pin ${pin} State ${state}

@@ -1,77 +1,816 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-13T14:30:58.014075" rpa="false" schemaversion="5">
-<suite id="s1" name="Uart Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\uart_tests.robot">
-<test id="s1-t1" name="UART Echo Test" line="6">
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-13T20:14:53.327460" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests">
+<suite id="s1-s1" name="Form" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\form.robot">
+<test id="s1-s1-t1" name="Submit Demo Web Form" line="5">
+<kw name="Open Headless Browser" owner="keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:14:53.776237" level="INFO">Opening browser 'chrome' to base url 'https://www.selenium.dev/selenium/web/web-form.html'.</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-13T20:14:53.775947" elapsed="2.800857"/>
+</kw>
+<arg>https://www.selenium.dev/selenium/web/web-form.html</arg>
+<status status="PASS" start="2026-06-13T20:14:53.775260" elapsed="2.801792"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:14:56.580616" level="INFO">Typing text 'John Doe' into text field 'name:my-text'.</msg>
+<arg>name:my-text</arg>
+<arg>John Doe</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:14:56.579871" elapsed="0.101354"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:14:56.681898" level="INFO">Typing text 'secret123' into text field 'name:my-password'.</msg>
+<arg>name:my-password</arg>
+<arg>secret123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:14:56.681628" elapsed="0.071790"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:14:56.754294" level="INFO">Typing text 'Hello, this is a test message.' into text field 'name:my-textarea'.</msg>
+<arg>name:my-textarea</arg>
+<arg>Hello, this is a test message.</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:14:56.753957" elapsed="0.073416"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>css:button</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-06-13T20:14:56.827927" elapsed="0.280900"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:14:57.109532" level="INFO">Clicking button 'css:button'.</msg>
+<arg>css:button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:14:57.109271" elapsed="0.297831"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Received!</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-13T20:14:57.407627" elapsed="0.080430"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:14:57.500968" level="INFO">Current page contains text 'Received!'.</msg>
+<arg>Received!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-13T20:14:57.489250" elapsed="0.011897"/>
+</kw>
+<kw name="Close Browser Session" owner="keywords">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-13T20:14:57.501883" elapsed="2.118144"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:14:57.501605" elapsed="2.118680"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:14:53.773885" elapsed="5.848257"/>
+</test>
+<status status="PASS" start="2026-06-13T20:14:53.367056" elapsed="6.257062"/>
+</suite>
+<suite id="s1-s2" name="Gpio Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\gpio_tests.robot">
+<test id="s1-s2-t1" name="Toggle GPIO Pin" line="6">
+<kw name="Set High" owner="GPIO">
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.688951" elapsed="0.000469"/>
+</kw>
+<kw name="Read State" owner="GPIO">
+<msg time="2026-06-13T20:14:59.690692" level="INFO">${state} = 1</msg>
+<var>${state}</var>
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.690275" elapsed="0.000484"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-06-13T20:14:59.691910" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${state}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.691511" elapsed="0.000473"/>
+</kw>
+<kw name="Set Low" owner="GPIO">
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.692661" elapsed="0.000174"/>
+</kw>
+<kw name="Read State" owner="GPIO">
+<msg time="2026-06-13T20:14:59.694007" level="INFO">${state} = 0</msg>
+<var>${state}</var>
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.693666" elapsed="0.000382"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-06-13T20:14:59.695621" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${state}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.694736" elapsed="0.000971"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:14:59.687611" elapsed="0.008544"/>
+</test>
+<test id="s1-s2-t2" name="GPIO Interrupt Test" line="14">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-06-13T20:14:59.697728" level="INFO">${events} = []</msg>
+<var>${events}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.697397" elapsed="0.000362"/>
+</kw>
+<kw name="Register Interrupt" owner="GPIO">
+<arg>5</arg>
+<arg>Keyword Callback</arg>
+<arg>${events}</arg>
+<arg>debounce_ms=200</arg>
+<arg>edge=both</arg>
+<status status="PASS" start="2026-06-13T20:14:59.698219" elapsed="0.000470"/>
+</kw>
+<kw name="Set High" owner="GPIO">
+<kw name="Keyword Callback">
+<kw name="Append To List" owner="Collections">
+<arg>${events}</arg>
+<arg>Pin ${pin} State ${state}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.700383" elapsed="0.000316"/>
+</kw>
+<arg>['Pin 5 State 1']</arg>
+<arg>5</arg>
+<arg>1</arg>
+<status status="PASS" start="2026-06-13T20:14:59.700040" elapsed="0.000734"/>
+</kw>
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.699142" elapsed="0.001792"/>
+</kw>
+<kw name="Set Low" owner="GPIO">
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.701331" elapsed="0.000136"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-06-13T20:14:59.902488" level="INFO">Slept 200 milliseconds.</msg>
+<arg>0.2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.701738" elapsed="0.201112"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-06-13T20:14:59.905233" level="INFO">Length is 1.</msg>
+<arg>${events}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.904008" elapsed="0.001308"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:14:59.696970" elapsed="0.208719"/>
+</test>
+<test id="s1-s2-t3" name="GPIO Interrupt With Debounce" line="22">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-06-13T20:14:59.908112" level="INFO">${events} = []</msg>
+<var>${events}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.907479" elapsed="0.000700"/>
+</kw>
+<kw name="Register Interrupt" owner="GPIO">
+<arg>5</arg>
+<arg>Keyword Callback</arg>
+<arg>${events}</arg>
+<arg>debounce_ms=200</arg>
+<arg>edge=both</arg>
+<status status="PASS" start="2026-06-13T20:14:59.908808" elapsed="0.000956"/>
+</kw>
+<kw name="Set High" owner="GPIO">
+<kw name="Keyword Callback">
+<kw name="Append To List" owner="Collections"><arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.910535" elapsed="0.001739"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+
+<arg>${events}</arg>
+<arg>Pin ${pin} State ${state}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.912113" elapsed="0.001140"/>
+</kw>
+<arg>['Pin 5 State 1']</arg>
+<arg>5</arg>
+<arg>1</arg>
+<status status="PASS" start="2026-06-13T20:14:59.911653" elapsed="0.001684"/>
+</kw>
+<msg time="2026-06-13T20:14:59.963317" level="INFO">Slept 50 milliseconds.</msg>
+<arg>0.05s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.912441" elapsed="0.051084"/>
+</kw>
+<kw name="Set Low" owner="GPIO">
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:14:59.964126" elapsed="0.000242"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-06-13T20:15:00.015695" level="INFO">Slept 50 milliseconds.</msg>
+<arg>0.05s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-13T20:14:59.964968" elapsed="0.051186"/>
+</kw>
+<kw name="Set High" owner="GPIO">
+<arg>5</arg>
+<status status="PASS" start="2026-06-13T20:15:00.016713" elapsed="0.000260"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-06-13T20:15:00.068410" level="INFO">Slept 50 milliseconds.</msg>
+<arg>0.05s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-13T20:15:00.017417" elapsed="0.051292"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-06-13T20:15:00.271230" level="INFO">Slept 200 milliseconds.</msg>
+<arg>0.2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-13T20:15:00.069943" elapsed="0.201636"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2026-06-13T20:15:00.273673" level="INFO">Length is 1.</msg>
+<arg>${events}</arg>
+<arg>1</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="PASS" start="2026-06-13T20:15:00.272662" elapsed="0.001122"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${events[0]}</arg>
+<arg>Pin 5 State 1</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-06-13T20:15:00.274902" elapsed="0.001837"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:14:59.906654" elapsed="0.370685"/>
+</test>
+<status status="PASS" start="2026-06-13T20:14:59.627889" elapsed="0.650658"/>
+</suite>
+<suite id="s1-s3" name="Login" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\login.robot">
+<test id="s1-s3-t1" name="Valid Login With Retry" line="38">
+<kw name="Login With Credentials (Retry)">
+<kw name="Open Headless Browser">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:00.290106" level="INFO">Opening browser 'chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-13T20:15:00.289253" elapsed="9.167326"/>
+</kw>
+<arg>${url}</arg>
+<status status="PASS" start="2026-06-13T20:15:00.288012" elapsed="9.169009"/>
+</kw>
+<kw name="Retry Keyword">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-13T20:15:09.462025" level="INFO">Attempt 1 for keyword: Input Text with args: ['id:username', 'tomsmith']</msg>
+<arg>Attempt ${i+1} for keyword: ${keyword} with args: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.460072" elapsed="0.002493"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:09.465861" level="INFO">Typing text 'tomsmith' into text field 'id:username'.</msg>
+<arg>@{args}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.465212" elapsed="0.218959"/>
+</kw>
+<msg time="2026-06-13T20:15:09.684610" level="INFO">${result} = ('PASS', None)</msg>
+<var>${result}</var>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.463426" elapsed="0.221289"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2026-06-13T20:15:09.687966" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.687309" elapsed="0.000972"/>
+</kw>
+<arg>'${result[0]}' == 'PASS'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.685065" elapsed="0.003627"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-06-13T20:15:09.689057" elapsed="0.000088"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-06-13T20:15:09.459636" elapsed="0.229605"/>
+</iter>
+<var>${i}</var>
+<value>${RETRY_ATTEMPTS}</value>
+<status status="PASS" start="2026-06-13T20:15:09.458374" elapsed="0.231023"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${result[0]}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Keyword ${keyword} failed after ${RETRY_ATTEMPTS} attempts</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.689785" elapsed="0.001634"/>
+</kw>
+<arg>Input Text</arg>
+<arg>id:username</arg>
+<arg>${username}</arg>
+<status status="PASS" start="2026-06-13T20:15:09.457632" elapsed="0.234011"/>
+</kw>
+<kw name="Retry Keyword">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-13T20:15:09.694317" level="INFO">Attempt 1 for keyword: Input Text with args: ['id:password', 'SuperSecretPassword!']</msg>
+<arg>Attempt ${i+1} for keyword: ${keyword} with args: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.693194" elapsed="0.001249"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:09.695591" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id:password'.</msg>
+<arg>@{args}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.695230" elapsed="0.181920"/>
+</kw>
+<msg time="2026-06-13T20:15:09.877519" level="INFO">${result} = ('PASS', None)</msg>
+<var>${result}</var>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.694683" elapsed="0.182904"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2026-06-13T20:15:09.879799" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.879159" elapsed="0.000868"/>
+</kw>
+<arg>'${result[0]}' == 'PASS'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.877893" elapsed="0.002308"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-06-13T20:15:09.880520" elapsed="0.000136"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-06-13T20:15:09.692923" elapsed="0.187826"/>
+</iter>
+<var>${i}</var>
+<value>${RETRY_ATTEMPTS}</value>
+<status status="PASS" start="2026-06-13T20:15:09.692498" elapsed="0.188342"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${result[0]}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Keyword ${keyword} failed after ${RETRY_ATTEMPTS} attempts</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.881351" elapsed="0.002524"/>
+</kw>
+<arg>Input Text</arg>
+<arg>id:password</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2026-06-13T20:15:09.692010" elapsed="0.192044"/>
+</kw>
+<kw name="Retry Keyword">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-13T20:15:09.886543" level="INFO">Attempt 1 for keyword: Click Button with args: ['css:button.radius']</msg>
+<arg>Attempt ${i+1} for keyword: ${keyword} with args: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.885118" elapsed="0.001625"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:09.888564" level="INFO">Clicking button 'css:button.radius'.</msg>
+<arg>@{args}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.887951" elapsed="0.966644"/>
+</kw>
+<msg time="2026-06-13T20:15:10.854930" level="INFO">${result} = ('PASS', None)</msg>
+<var>${result}</var>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-06-13T20:15:09.887139" elapsed="0.967864"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2026-06-13T20:15:10.858628" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2026-06-13T20:15:10.857957" elapsed="0.000857"/>
+</kw>
+<arg>'${result[0]}' == 'PASS'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:10.855608" elapsed="0.003351"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-06-13T20:15:10.859206" elapsed="0.000109"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-06-13T20:15:09.884966" elapsed="0.974446"/>
+</iter>
+<var>${i}</var>
+<value>${RETRY_ATTEMPTS}</value>
+<status status="PASS" start="2026-06-13T20:15:09.884705" elapsed="0.974797"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${result[0]}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Keyword ${keyword} failed after ${RETRY_ATTEMPTS} attempts</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:10.859760" elapsed="0.001495"/>
+</kw>
+<arg>Click Button</arg>
+<arg>css:button.radius</arg>
+<status status="PASS" start="2026-06-13T20:15:09.884368" elapsed="0.977113"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:10.896741" level="INFO">Current page contains text 'Secure Area'.</msg>
+<arg>${expected}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-13T20:15:10.861753" elapsed="0.035126"/>
+</kw>
+<kw name="Close Browser Session">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-13T20:15:10.897478" elapsed="2.231884"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:15:10.897159" elapsed="2.232762"/>
+</kw>
+<arg>https://the-internet.herokuapp.com/login</arg>
+<arg>tomsmith</arg>
+<arg>SuperSecretPassword!</arg>
+<arg>Secure Area</arg>
+<status status="PASS" start="2026-06-13T20:15:00.287137" elapsed="12.842932"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:15:00.285677" elapsed="12.846160"/>
+</test>
+<test id="s1-s3-t2" name="Invalid Login With Retry" line="41">
+<kw name="Login With Credentials (Retry)">
+<kw name="Open Headless Browser">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:13.140969" level="INFO">Opening browser 'chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-13T20:15:13.139483" elapsed="8.275258"/>
+</kw>
+<arg>${url}</arg>
+<status status="PASS" start="2026-06-13T20:15:13.137936" elapsed="8.277482"/>
+</kw>
+<kw name="Retry Keyword">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-13T20:15:21.420386" level="INFO">Attempt 1 for keyword: Input Text with args: ['id:username', 'wronguser']</msg>
+<arg>Attempt ${i+1} for keyword: ${keyword} with args: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.418136" elapsed="0.002409"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:21.423342" level="INFO">Typing text 'wronguser' into text field 'id:username'.</msg>
+<arg>@{args}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.422301" elapsed="0.210917"/>
+</kw>
+<msg time="2026-06-13T20:15:21.633447" level="INFO">${result} = ('PASS', None)</msg>
+<var>${result}</var>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.420999" elapsed="0.212482"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2026-06-13T20:15:21.634947" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.634668" elapsed="0.000369"/>
+</kw>
+<arg>'${result[0]}' == 'PASS'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.633667" elapsed="0.001462"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-06-13T20:15:21.635530" elapsed="0.000127"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-06-13T20:15:21.417723" elapsed="0.218039"/>
+</iter>
+<var>${i}</var>
+<value>${RETRY_ATTEMPTS}</value>
+<status status="PASS" start="2026-06-13T20:15:21.417090" elapsed="0.218761"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${result[0]}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Keyword ${keyword} failed after ${RETRY_ATTEMPTS} attempts</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.636113" elapsed="0.001339"/>
+</kw>
+<arg>Input Text</arg>
+<arg>id:username</arg>
+<arg>${username}</arg>
+<status status="PASS" start="2026-06-13T20:15:21.416003" elapsed="0.221633"/>
+</kw>
+<kw name="Retry Keyword">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-13T20:15:21.639745" level="INFO">Attempt 1 for keyword: Input Text with args: ['id:password', 'wrongpassword']</msg>
+<arg>Attempt ${i+1} for keyword: ${keyword} with args: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.638934" elapsed="0.000892"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:21.640778" level="INFO">Typing text 'wrongpassword' into text field 'id:password'.</msg>
+<arg>@{args}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.640475" elapsed="0.126898"/>
+</kw>
+<msg time="2026-06-13T20:15:21.767867" level="INFO">${result} = ('PASS', None)</msg>
+<var>${result}</var>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.640033" elapsed="0.127878"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2026-06-13T20:15:21.770233" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.769857" elapsed="0.000523"/>
+</kw>
+<arg>'${result[0]}' == 'PASS'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.768113" elapsed="0.002415"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-06-13T20:15:21.770729" elapsed="0.000057"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-06-13T20:15:21.638747" elapsed="0.132100"/>
+</iter>
+<var>${i}</var>
+<value>${RETRY_ATTEMPTS}</value>
+<status status="PASS" start="2026-06-13T20:15:21.638432" elapsed="0.132487"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${result[0]}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Keyword ${keyword} failed after ${RETRY_ATTEMPTS} attempts</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.771125" elapsed="0.001253"/>
+</kw>
+<arg>Input Text</arg>
+<arg>id:password</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2026-06-13T20:15:21.637976" elapsed="0.134588"/>
+</kw>
+<kw name="Retry Keyword">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-13T20:15:21.774216" level="INFO">Attempt 1 for keyword: Click Button with args: ['css:button.radius']</msg>
+<arg>Attempt ${i+1} for keyword: ${keyword} with args: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.773556" elapsed="0.000728"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:21.775176" level="INFO">Clicking button 'css:button.radius'.</msg>
+<arg>@{args}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.774885" elapsed="0.127648"/>
+</kw>
+<msg time="2026-06-13T20:15:21.903046" level="INFO">${result} = ('PASS', None)</msg>
+<var>${result}</var>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.774456" elapsed="0.128713"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2026-06-13T20:15:21.905522" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.905087" elapsed="0.000574"/>
+</kw>
+<arg>'${result[0]}' == 'PASS'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.903538" elapsed="0.002346"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-06-13T20:15:21.906360" elapsed="0.000098"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-06-13T20:15:21.773413" elapsed="0.133133"/>
+</iter>
+<var>${i}</var>
+<value>${RETRY_ATTEMPTS}</value>
+<status status="PASS" start="2026-06-13T20:15:21.773130" elapsed="0.133507"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${result[0]}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Keyword ${keyword} failed after ${RETRY_ATTEMPTS} attempts</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.906908" elapsed="0.001291"/>
+</kw>
+<arg>Click Button</arg>
+<arg>css:button.radius</arg>
+<status status="PASS" start="2026-06-13T20:15:21.772818" elapsed="0.135546"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-13T20:15:22.594645" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
+<arg>${expected}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-13T20:15:21.908524" elapsed="0.686259"/>
+</kw>
+<kw name="Close Browser Session">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-13T20:15:22.595403" elapsed="2.192631"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:15:22.595057" elapsed="2.193341"/>
+</kw>
+<arg>https://the-internet.herokuapp.com/login</arg>
+<arg>wronguser</arg>
+<arg>wrongpassword</arg>
+<arg>Your username is invalid!</arg>
+<status status="PASS" start="2026-06-13T20:15:13.136381" elapsed="11.652178"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:15:13.134432" elapsed="11.655313"/>
+</test>
+<status status="PASS" start="2026-06-13T20:15:00.280415" elapsed="24.512114"/>
+</suite>
+<suite id="s1-s4" name="Uart Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\uart_tests.robot">
+<test id="s1-s4-t1" name="UART Echo Test" line="5">
 <kw name="Send" owner="UART">
-<msg time="2026-06-13T14:30:58.045257" level="INFO">UART TX: HelloBoard</msg>
 <arg>HelloBoard</arg>
-<status status="PASS" start="2026-06-13T14:30:58.045106" elapsed="0.000212"/>
+<doc>Send a message asynchronously with delay and error injection.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.817510" elapsed="0.002084"/>
 </kw>
 <kw name="Receive" owner="UART">
-<msg time="2026-06-13T14:30:58.045590" level="INFO">UART RX: HelloBoard</msg>
-<msg time="2026-06-13T14:30:58.045654" level="INFO">${resp} = HelloBoard</msg>
+<msg time="2026-06-13T20:15:24.821785" level="INFO">${resp} = HelloBoard</msg>
 <var>${resp}</var>
-<status status="PASS" start="2026-06-13T14:30:58.045509" elapsed="0.000160"/>
+<arg>timeout_ms=500</arg>
+<doc>Receive a message with optional timeout.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.820763" elapsed="0.001190"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp}</arg>
 <arg>HelloBoard</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-06-13T14:30:58.045981" elapsed="0.000290"/>
+<status status="PASS" start="2026-06-13T20:15:24.828263" elapsed="0.002441"/>
 </kw>
-<status status="PASS" start="2026-06-13T14:30:58.044531" elapsed="0.001937"/>
+<status status="PASS" start="2026-06-13T20:15:24.816270" elapsed="0.015855"/>
 </test>
-<test id="s1-t2" name="UART Error Injection Test" line="12">
+<test id="s1-s4-t2" name="Deterministic UART Seed" line="10">
+<kw name="Set Seed" owner="UART">
+<arg>42</arg>
+<doc>Set the seed for the random generator to ensure reproducibility.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.835650" elapsed="0.000724"/>
+</kw>
 <kw name="Enable Error Mode" owner="UART">
-<msg time="2026-06-13T14:30:58.047070" level="INFO">Error mode set to True</msg>
 <arg>True</arg>
-<doc>Enable or disable error injection.</doc>
-<status status="PASS" start="2026-06-13T14:30:58.046952" elapsed="0.000145"/>
+<arg>1.0</arg>
+<doc>Enable or disable error injection with probability.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.840520" elapsed="0.000527"/>
 </kw>
 <kw name="Send" owner="UART">
-<msg time="2026-06-13T14:30:58.047320" level="INFO">UART TX ERROR: TestMessage</msg>
-<arg>TestMessage</arg>
-<status status="PASS" start="2026-06-13T14:30:58.047245" elapsed="0.000098"/>
+<arg>TestMsg</arg>
+<doc>Send a message asynchronously with delay and error injection.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.843175" elapsed="0.003627"/>
 </kw>
 <kw name="Receive" owner="UART">
-<msg time="2026-06-13T14:30:58.047574" level="INFO">UART RX: CORRUPTED</msg>
-<msg time="2026-06-13T14:30:58.047626" level="INFO">${resp} = CORRUPTED</msg>
+<msg time="2026-06-13T20:15:24.849398" level="INFO">${resp} = CORRUPTED</msg>
 <var>${resp}</var>
-<status status="PASS" start="2026-06-13T14:30:58.047518" elapsed="0.000121"/>
+<arg>timeout_ms=500</arg>
+<doc>Receive a message with optional timeout.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.848435" elapsed="0.001068"/>
 </kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Log" owner="BuiltIn">
-<msg time="2026-06-13T14:30:58.048263" level="INFO">Received corrupted frame</msg>
-<arg>Received corrupted frame</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2026-06-13T14:30:58.048137" elapsed="0.000155"/>
-</kw>
-<arg>'${resp}' == 'CORRUPTED'</arg>
-<arg>Log</arg>
-<arg>Received corrupted frame</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-06-13T14:30:58.047773" elapsed="0.000551"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<arg>'${resp}' != 'CORRUPTED'</arg>
-<arg>Should Be Equal</arg>
+<kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp}</arg>
-<arg>TestMessage</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-06-13T14:30:58.048510" elapsed="0.000207"/>
+<arg>CORRUPTED</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.850544" elapsed="0.002309"/>
 </kw>
-<status status="PASS" start="2026-06-13T14:30:58.046726" elapsed="0.002148"/>
+<status status="PASS" start="2026-06-13T20:15:24.834264" elapsed="0.024248"/>
 </test>
-<status status="PASS" start="2026-06-13T14:30:58.016144" elapsed="0.033793"/>
+<test id="s1-s4-t3" name="UART Timeout And Delay" line="17">
+<kw name="Set Seed" owner="UART">
+<arg>1</arg>
+<doc>Set the seed for the random generator to ensure reproducibility.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.865300" elapsed="0.000740"/>
+</kw>
+<kw name="Enable Error Mode" owner="UART">
+<arg>False</arg>
+<doc>Enable or disable error injection with probability.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.868144" elapsed="0.002187"/>
+</kw>
+<kw name="Set Delay" owner="UART">
+<arg>500</arg>
+<doc>Set artificial delay response time in milliseconds.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.881487" elapsed="0.000417"/>
+</kw>
+<kw name="Send" owner="UART">
+<arg>SlowMsg</arg>
+<doc>Send a message asynchronously with delay and error injection.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.883739" elapsed="0.003630"/>
+</kw>
+<kw name="Receive" owner="UART">
+<msg time="2026-06-13T20:15:24.999303" level="INFO">${resp} = </msg>
+<var>${resp}</var>
+<arg>timeout_ms=100</arg>
+<doc>Receive a message with optional timeout.</doc>
+<status status="PASS" start="2026-06-13T20:15:24.897534" elapsed="0.101871"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp}</arg>
+<arg>${EMPTY}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.000322" elapsed="0.001544"/>
+</kw>
+<kw name="Receive" owner="UART">
+<msg time="2026-06-13T20:15:25.389058" level="INFO">${resp} = SlowMsg</msg>
+<var>${resp}</var>
+<arg>timeout_ms=1000</arg>
+<doc>Receive a message with optional timeout.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.002855" elapsed="0.386309"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp}</arg>
+<arg>SlowMsg</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.390364" elapsed="0.001022"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:15:24.862766" elapsed="0.529530"/>
+</test>
+<test id="s1-s4-t4" name="UART Error Injection Probability" line="27">
+<kw name="Set Seed" owner="UART">
+<arg>123</arg>
+<doc>Set the seed for the random generator to ensure reproducibility.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.394702" elapsed="0.012034"/>
+</kw>
+<kw name="Enable Error Mode" owner="UART">
+<arg>True</arg>
+<arg>1.0</arg>
+<doc>Enable or disable error injection with probability.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.409231" elapsed="0.000636"/>
+</kw>
+<kw name="Send" owner="UART">
+<arg>DataFrame</arg>
+<doc>Send a message asynchronously with delay and error injection.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.410975" elapsed="0.001306"/>
+</kw>
+<kw name="Receive" owner="UART">
+<msg time="2026-06-13T20:15:25.417819" level="INFO">${resp} = CORRUPTED</msg>
+<var>${resp}</var>
+<arg>timeout_ms=500</arg>
+<doc>Receive a message with optional timeout.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.415598" elapsed="0.002478"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp}</arg>
+<arg>CORRUPTED</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-06-13T20:15:25.422701" elapsed="0.001769"/>
+</kw>
+<status status="PASS" start="2026-06-13T20:15:25.393638" elapsed="0.032920"/>
+</test>
+<status status="PASS" start="2026-06-13T20:15:24.794798" elapsed="0.637745"/>
+</suite>
+<status status="PASS" start="2026-06-13T20:14:53.329902" elapsed="32.107718"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="10" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Uart Tests" id="s1" pass="2" fail="0" skip="0">Uart Tests</stat>
+<stat name="Tests" id="s1" pass="10" fail="0" skip="0">Tests</stat>
+<stat name="Form" id="s1-s1" pass="1" fail="0" skip="0">Tests.Form</stat>
+<stat name="Gpio Tests" id="s1-s2" pass="3" fail="0" skip="0">Tests.Gpio Tests</stat>
+<stat name="Login" id="s1-s3" pass="2" fail="0" skip="0">Tests.Login</stat>
+<stat name="Uart Tests" id="s1-s4" pass="4" fail="0" skip="0">Tests.Uart Tests</stat>
 </suite>
 </statistics>
 <errors>
