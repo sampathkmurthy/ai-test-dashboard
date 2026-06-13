@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../keywords.robot
+Resource    ../resources/keywords.robot
 
 *** Test Cases ***
 Submit Demo Web Form

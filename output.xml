@@ -1,129 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-12T02:51:15.324138" rpa="false" schemaversion="5">
-<suite id="s1" name="Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests">
-<suite id="s1-s1" name="Form" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\form.robot">
-<test id="s1-s1-t1" name="Submit Demo Web Form" line="5">
-<kw name="Open Headless Browser" owner="keywords">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:15.645659" level="INFO">Opening browser 'chrome' to base url 'https://www.selenium.dev/selenium/web/web-form.html'.</msg>
-<arg>${url}</arg>
-<arg>${BROWSER}</arg>
-<arg>options=${OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2026-06-12T02:51:15.644923" elapsed="1.584925"/>
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-13T14:30:58.014075" rpa="false" schemaversion="5">
+<suite id="s1" name="Uart Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\uart_tests.robot">
+<test id="s1-t1" name="UART Echo Test" line="6">
+<kw name="Send" owner="UART">
+<msg time="2026-06-13T14:30:58.045257" level="INFO">UART TX: HelloBoard</msg>
+<arg>HelloBoard</arg>
+<status status="PASS" start="2026-06-13T14:30:58.045106" elapsed="0.000212"/>
 </kw>
-<arg>https://www.selenium.dev/selenium/web/web-form.html</arg>
-<status status="PASS" start="2026-06-12T02:51:15.643131" elapsed="1.586957"/>
+<kw name="Receive" owner="UART">
+<msg time="2026-06-13T14:30:58.045590" level="INFO">UART RX: HelloBoard</msg>
+<msg time="2026-06-13T14:30:58.045654" level="INFO">${resp} = HelloBoard</msg>
+<var>${resp}</var>
+<status status="PASS" start="2026-06-13T14:30:58.045509" elapsed="0.000160"/>
 </kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:17.231181" level="INFO">Typing text 'John Doe' into text field 'name:my-text'.</msg>
-<arg>name:my-text</arg>
-<arg>John Doe</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.230537" elapsed="0.096026"/>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp}</arg>
+<arg>HelloBoard</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-06-13T14:30:58.045981" elapsed="0.000290"/>
 </kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:17.327213" level="INFO">Typing text 'secret123' into text field 'name:my-password'.</msg>
-<arg>name:my-password</arg>
-<arg>secret123</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.326935" elapsed="0.064965"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:17.392535" level="INFO">Typing text 'Hello, this is a test message.' into text field 'name:my-textarea'.</msg>
-<arg>name:my-textarea</arg>
-<arg>Hello, this is a test message.</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.392268" elapsed="0.067334"/>
-</kw>
-<kw name="Scroll Element Into View" owner="SeleniumLibrary">
-<arg>css:button</arg>
-<doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.459964" elapsed="0.295629"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:17.756217" level="INFO">Clicking button 'css:button'.</msg>
-<arg>css:button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.755943" elapsed="0.114286"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Received!</arg>
-<arg>timeout=15s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.870595" elapsed="0.028050"/>
-</kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:17.906113" level="INFO">Current page contains text 'Received!'.</msg>
-<arg>Received!</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.899057" elapsed="0.007170"/>
-</kw>
-<kw name="Close Browser Session" owner="keywords">
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-06-12T02:51:17.906966" elapsed="2.113823"/>
-</kw>
-<status status="PASS" start="2026-06-12T02:51:17.906621" elapsed="2.114374"/>
-</kw>
-<status status="PASS" start="2026-06-12T02:51:15.641388" elapsed="4.380097"/>
+<status status="PASS" start="2026-06-13T14:30:58.044531" elapsed="0.001937"/>
 </test>
-<status status="PASS" start="2026-06-12T02:51:15.358879" elapsed="4.663468"/>
-</suite>
-<suite id="s1-s2" name="Login" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\login.robot">
-<test id="s1-s2-t1" name="Valid Login" line="8">
-<kw name="Open Headless Browser" owner="browser_setup">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:20.033990" level="INFO">Opening browser 'chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<arg>https://the-internet.herokuapp.com/login</arg>
-<arg>${BROWSER}</arg>
-<arg>options=${OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2026-06-12T02:51:20.033684" elapsed="4.698691"/>
+<test id="s1-t2" name="UART Error Injection Test" line="12">
+<kw name="Enable Error Mode" owner="UART">
+<msg time="2026-06-13T14:30:58.047070" level="INFO">Error mode set to True</msg>
+<arg>True</arg>
+<doc>Enable or disable error injection.</doc>
+<status status="PASS" start="2026-06-13T14:30:58.046952" elapsed="0.000145"/>
 </kw>
-<status status="PASS" start="2026-06-12T02:51:20.033223" elapsed="4.699389"/>
+<kw name="Send" owner="UART">
+<msg time="2026-06-13T14:30:58.047320" level="INFO">UART TX ERROR: TestMessage</msg>
+<arg>TestMessage</arg>
+<status status="PASS" start="2026-06-13T14:30:58.047245" elapsed="0.000098"/>
 </kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:24.733626" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
-<arg>id=username</arg>
-<arg>tomsmith</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-12T02:51:24.733135" elapsed="0.089349"/>
+<kw name="Receive" owner="UART">
+<msg time="2026-06-13T14:30:58.047574" level="INFO">UART RX: CORRUPTED</msg>
+<msg time="2026-06-13T14:30:58.047626" level="INFO">${resp} = CORRUPTED</msg>
+<var>${resp}</var>
+<status status="PASS" start="2026-06-13T14:30:58.047518" elapsed="0.000121"/>
 </kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:24.823354" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
-<arg>id=password</arg>
-<arg>SuperSecretPassword!</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-12T02:51:24.823011" elapsed="0.069815"/>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-13T14:30:58.048263" level="INFO">Received corrupted frame</msg>
+<arg>Received corrupted frame</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-13T14:30:58.048137" elapsed="0.000155"/>
 </kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:24.893523" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
-<arg>xpath=//button[@type='submit']</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-12T02:51:24.893195" elapsed="0.553858"/>
+<arg>'${resp}' == 'CORRUPTED'</arg>
+<arg>Log</arg>
+<arg>Received corrupted frame</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T14:30:58.047773" elapsed="0.000551"/>
 </kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>css:div.flash.success</arg>
-<arg>timeout=30s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2026-06-12T02:51:25.447619" elapsed="0.009739"/>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${resp}' != 'CORRUPTED'</arg>
+<arg>Should Be Equal</arg>
+<arg>${resp}</arg>
+<arg>TestMessage</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-13T14:30:58.048510" elapsed="0.000207"/>
 </kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2026-06-12T02:51:25.469411" level="INFO">Current page contains text 'Secure Area'.</msg>
-<arg>Secure Area</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2026-06-12T02:51:25.457764" elapsed="0.011757"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-06-12T02:51:25.469842" elapsed="2.127066"/>
-</kw>
-<status status="PASS" start="2026-06-12T02:51:20.032503" elapsed="7.564908"/>
+<status status="PASS" start="2026-06-13T14:30:58.046726" elapsed="0.002148"/>
 </test>
-<status status="PASS" start="2026-06-12T02:51:20.023417" elapsed="7.574994"/>
-</suite>
-<status status="PASS" start="2026-06-12T02:51:15.326081" elapsed="12.273227"/>
+<status status="PASS" start="2026-06-13T14:30:58.016144" elapsed="0.033793"/>
 </suite>
 <statistics>
 <total>
@@ -132,9 +71,7 @@
 <tag>
 </tag>
 <suite>
-<stat name="Tests" id="s1" pass="2" fail="0" skip="0">Tests</stat>
-<stat name="Form" id="s1-s1" pass="1" fail="0" skip="0">Tests.Form</stat>
-<stat name="Login" id="s1-s2" pass="1" fail="0" skip="0">Tests.Login</stat>
+<stat name="Uart Tests" id="s1" pass="2" fail="0" skip="0">Uart Tests</stat>
 </suite>
 </statistics>
 <errors>
