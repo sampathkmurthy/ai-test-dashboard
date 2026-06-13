@@ -26,26 +26,17 @@ Retry Keyword
     Run Keyword If    '${result[0]}' == 'FAIL'    Fail    Keyword ${keyword} failed after ${RETRY_ATTEMPTS} attempts
 
 Login With Credentials (Retry)
-    [Arguments]    ${url}    ${username}    ${password}
+    [Arguments]    ${url}    ${username}    ${password}    ${expected}
     Open Headless Browser    ${url}
     Retry Keyword    Input Text    id:username    ${username}
     Retry Keyword    Input Text    id:password    ${password}
     Retry Keyword    Click Button    css:button.radius
-    Page Should Contain    Secure Area
-    Close Browser Session
-
-Login With Invalid Credentials (Retry)
-    [Arguments]    ${url}    ${username}    ${password}
-    Open Headless Browser    ${url}
-    Retry Keyword    Input Text    id:username    ${username}
-    Retry Keyword    Input Text    id:password    ${password}
-    Retry Keyword    Click Button    css:button.radius
-    Page Should Contain    Your username is invalid!
+    Page Should Contain    ${expected}
     Close Browser Session
 
 *** Test Cases ***
 Valid Login With Retry
-    Login With Credentials (Retry)    https://the-internet.herokuapp.com/login    tomsmith    SuperSecretPassword!
+    Login With Credentials (Retry)    https://the-internet.herokuapp.com/login    tomsmith    SuperSecretPassword!    Secure Area
 
 Invalid Login With Retry
-    Login With Invalid Credentials (Retry)    https://the-internet.herokuapp.com/login    wronguser    wrongpassword
+    Login With Credentials (Retry)    https://the-internet.herokuapp.com/login    wronguser    wrongpassword    Your username is invalid!

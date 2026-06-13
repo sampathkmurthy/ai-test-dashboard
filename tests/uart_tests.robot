@@ -1,7 +1,6 @@
 *** Settings ***
 Library    utils.uart_sim.UARTSimulation    WITH NAME    UART
 
-
 *** Test Cases ***
 UART Echo Test
     UART.Send    HelloBoard
