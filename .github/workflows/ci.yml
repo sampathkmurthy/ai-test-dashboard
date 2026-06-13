@@ -50,7 +50,7 @@ jobs:
 
     - name: Run Robot Framework tests (headless)
       run: |
-        robot tests/
+        robot --pythonpath . tests
 
     - name: Upload Robot Framework reports
       uses: actions/upload-artifact@v4
