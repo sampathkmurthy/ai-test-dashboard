@@ -31,6 +31,7 @@ Login With Credentials (Retry)
     Retry Keyword    Input Text    id:username    ${username}
     Retry Keyword    Input Text    id:password    ${password}
     Retry Keyword    Click Button    css:button.radius
+    Wait Until Page Contains    ${expected}    timeout=10s
     Page Should Contain    ${expected}
     Close Browser Session
 

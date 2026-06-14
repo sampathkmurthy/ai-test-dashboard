@@ -1,92 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-11T22:23:23.456226" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-06-13T21:00:05.951471" rpa="false" schemaversion="5">
 <suite id="s1" name="My-Robot-Project" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project">
 <suite id="s1-s1" name="Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests">
-<suite id="s1-s1-s1" name="Form" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\form.robot">
-<test id="s1-s1-s1-t1" name="Submit Demo Web Form" line="5">
-<kw name="Open Headless Browser" owner="keywords">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2026-06-11T22:23:23.746473" level="INFO">Opening browser 'chrome' to base url 'https://www.selenium.dev/selenium/web/web-form.html'.</msg>
-<arg>${url}</arg>
-<arg>${BROWSER}</arg>
-<arg>options=${OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2026-06-11T22:23:23.745975" elapsed="1.391382"/>
+<suite id="s1-s1-s1" name="Sensor Tests" source="C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\sensor_tests.robot">
+<test id="s1-s1-s1-t1" name="Sensor Normal Read" line="5">
+<kw name="Sensor.Read Value">
+<msg time="2026-06-13T21:00:06.224029" level="FAIL">No keyword with name 'Sensor.Read Value' found.</msg>
+<var>${val}</var>
+<status status="FAIL" start="2026-06-13T21:00:06.222063" elapsed="0.011016">No keyword with name 'Sensor.Read Value' found.</status>
 </kw>
-<arg>https://www.selenium.dev/selenium/web/web-form.html</arg>
-<status status="PASS" start="2026-06-11T22:23:23.744922" elapsed="1.392897"/>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${val} &gt;= 24.5 and ${val} &lt;= 25.5</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-06-13T21:00:06.235295" elapsed="0.000413"/>
 </kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-11T22:23:25.139553" level="INFO">Typing text 'John Doe' into text field 'name:my-text'.</msg>
-<arg>name:my-text</arg>
-<arg>John Doe</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.138276" elapsed="0.105958"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-11T22:23:25.245430" level="INFO">Typing text 'secret123' into text field 'name:my-password'.</msg>
-<arg>name:my-password</arg>
-<arg>secret123</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.244802" elapsed="0.089671"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-06-11T22:23:25.336037" level="INFO">Typing text 'Hello, this is a test message.' into text field 'name:my-textarea'.</msg>
-<arg>name:my-textarea</arg>
-<arg>Hello, this is a test message.</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.335069" elapsed="0.075029"/>
-</kw>
-<kw name="Scroll Element Into View" owner="SeleniumLibrary">
-<arg>css:button</arg>
-<doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.410602" elapsed="0.292564"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-06-11T22:23:25.704401" level="INFO">Clicking button 'css:button'.</msg>
-<arg>css:button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.703647" elapsed="0.108774"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Received!</arg>
-<arg>timeout=15s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.812953" elapsed="0.029286"/>
-</kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2026-06-11T22:23:25.852085" level="INFO">Current page contains text 'Received!'.</msg>
-<arg>Received!</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.842743" elapsed="0.009693"/>
-</kw>
-<kw name="Close Browser Session" owner="keywords">
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-06-11T22:23:25.854292" elapsed="2.097475"/>
-</kw>
-<status status="PASS" start="2026-06-11T22:23:25.853263" elapsed="2.098879"/>
-</kw>
-<status status="PASS" start="2026-06-11T22:23:23.740866" elapsed="4.211714"/>
+<status status="FAIL" start="2026-06-13T21:00:06.185502" elapsed="0.050871">No keyword with name 'Sensor.Read Value' found.</status>
 </test>
-<status status="PASS" start="2026-06-11T22:23:23.499255" elapsed="4.458876"/>
+<test id="s1-s1-s1-t2" name="Sensor Error Injection" line="9">
+<kw name="Sensor.Enable Error Mode">
+<msg time="2026-06-13T21:00:06.261559" level="FAIL">No keyword with name 'Sensor.Enable Error Mode' found.</msg>
+<arg>True</arg>
+<status status="FAIL" start="2026-06-13T21:00:06.259999" elapsed="0.033901">No keyword with name 'Sensor.Enable Error Mode' found.</status>
+</kw>
+<kw name="Sensor.Read Value">
+<var>${val}</var>
+<status status="NOT RUN" start="2026-06-13T21:00:06.296918" elapsed="0.001490"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${val}' == 'CRC_ERROR'</arg>
+<arg>Log</arg>
+<arg>Simulated CRC error detected</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2026-06-13T21:00:06.299986" elapsed="0.000423"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${val}' != 'CRC_ERROR'</arg>
+<arg>Should Be True</arg>
+<arg>${val} &gt;= 24.0 and ${val} &lt;= 26.0</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2026-06-13T21:00:06.300933" elapsed="0.000225"/>
+</kw>
+<status status="FAIL" start="2026-06-13T21:00:06.250208" elapsed="0.051640">No keyword with name 'Sensor.Enable Error Mode' found.</status>
+</test>
+<test id="s1-s1-s1-t3" name="Sensor Deterministic Seed" line="15">
+<kw name="Sensor.Set Seed">
+<msg time="2026-06-13T21:00:06.354677" level="FAIL">No keyword with name 'Sensor.Set Seed' found.</msg>
+<arg>123</arg>
+<status status="FAIL" start="2026-06-13T21:00:06.353127" elapsed="0.035465">No keyword with name 'Sensor.Set Seed' found.</status>
+</kw>
+<kw name="Sensor.Read Value">
+<var>${val1}</var>
+<status status="NOT RUN" start="2026-06-13T21:00:06.394196" elapsed="0.001696"/>
+</kw>
+<kw name="Sensor.Set Seed">
+<arg>123</arg>
+<status status="NOT RUN" start="2026-06-13T21:00:06.397829" elapsed="0.001165"/>
+</kw>
+<kw name="Sensor.Read Value">
+<var>${val2}</var>
+<status status="NOT RUN" start="2026-06-13T21:00:06.400215" elapsed="0.001902"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${val1}</arg>
+<arg>${val2}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2026-06-13T21:00:06.404057" elapsed="0.000284"/>
+</kw>
+<status status="FAIL" start="2026-06-13T21:00:06.323867" elapsed="0.081282">No keyword with name 'Sensor.Set Seed' found.</status>
+</test>
+<status status="FAIL" start="2026-06-13T21:00:06.124445" elapsed="0.303900"/>
 </suite>
-<status status="PASS" start="2026-06-11T22:23:23.494796" elapsed="4.467221"/>
+<status status="FAIL" start="2026-06-13T21:00:06.050186" elapsed="0.392928"/>
 </suite>
-<status status="PASS" start="2026-06-11T22:23:23.461970" elapsed="4.503769"/>
+<status status="FAIL" start="2026-06-13T21:00:05.970289" elapsed="0.489158"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="My-Robot-Project" id="s1" pass="1" fail="0" skip="0">My-Robot-Project</stat>
-<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">My-Robot-Project.Tests</stat>
-<stat name="Form" id="s1-s1-s1" pass="1" fail="0" skip="0">My-Robot-Project.Tests.Form</stat>
+<stat name="My-Robot-Project" id="s1" pass="0" fail="3" skip="0">My-Robot-Project</stat>
+<stat name="Tests" id="s1-s1" pass="0" fail="3" skip="0">My-Robot-Project.Tests</stat>
+<stat name="Sensor Tests" id="s1-s1-s1" pass="0" fail="3" skip="0">My-Robot-Project.Tests.Sensor Tests</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2026-06-13T21:00:06.132265" level="ERROR">Error in file 'C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\tests\sensor_tests.robot' on line 2: Importing library 'utils.sensor_sim.TempSensorSimulation' failed: ModuleNotFoundError: No module named 'utils'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\lib
+  C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\resources
+  c:\Users\Sampath_Kumar_K\.vscode\extensions\d-biehl.robotcode-2.6.0\bundled\libs
+  c:\Users\Sampath_Kumar_K\.vscode\extensions\d-biehl.robotcode-2.6.0\bundled\tool\robotcode
+  C:\Users\Sampath_Kumar_K\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\Sampath_Kumar_K\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\Sampath_Kumar_K\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\Sampath_Kumar_K\AppData\Local\Programs\Python\Python313
+  C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\venv
+  C:\Users\Sampath_Kumar_K\OneDrive\my-robot-project\venv\Lib\site-packages</msg>
 </errors>
 </robot>
