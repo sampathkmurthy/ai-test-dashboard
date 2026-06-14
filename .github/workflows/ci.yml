@@ -24,18 +24,18 @@ jobs:
       - name: Build firmware
         run: |
           cd firmware
-          gcc firmware.c hal_spi.c -o ../firmware   # produces 'firmware' binary
+          gcc firmware.c hal_spi.c -o ../firmware.bin   # produces 'firmware' binary
 
       - name: Verify firmware artifact
         run: |
-          file ../firmware
-          ls -l ../firmware
+          file ../firmware.bin
+          ls -l ../firmware.bin
 
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
           name: firmware-binary
-          path: firmware
+          path: firmware.bin
 
   test:
     runs-on: ubuntu-latest
