@@ -4,9 +4,11 @@ import platform
 
 def run_firmware(command):
     """Run firmware binary with a simulated SPI command and capture output."""
-    # On Windows builds, the binary is firmware.exe
-    # On Linux/macOS builds, it may just be firmware (no .exe)
-    exe_name = "firmware.exe" if platform.system() == "Windows" else "firmware"
+    if platform.system() == "Windows":
+        exe_name = "firmware.exe"
+    else:
+        exe_name = "firmware.bin"   # match CI build output
+
     exe_path = os.path.join(os.getcwd(), exe_name)
 
     if platform.system() == "Windows":
@@ -25,5 +27,3 @@ def run_firmware(command):
         )
 
     return result.stdout.strip()
-
-
