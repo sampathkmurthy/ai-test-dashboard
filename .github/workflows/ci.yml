@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: firmware-binary
-          path: firmware.bin
+          path: firmware/firmware.bin
 
   test:
     runs-on: ubuntu-latest
