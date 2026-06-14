@@ -12,12 +12,11 @@ permissions:
   id-token: write      # required for OIDC authentication
 
 jobs:
-  
   build-firmware:
-    runs-on: ubuntu-latest   # or windows-latest if you want Windows build
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install build tools
         run: sudo apt-get update && sudo apt-get install -y build-essential
@@ -25,131 +24,126 @@ jobs:
       - name: Build firmware
         run: |
           cd firmware
-          gcc firmware.c hal_spi.c -o ../firmware.bin   # produces firmware.bin binary
+          gcc firmware.c hal_spi.c -o ../firmware   # produces 'firmware' binary
 
       - name: Verify firmware artifact
         run: |
-          file ../firmware.bin
-          ls -l ../firmware.bin
+          file ../firmware
+          ls -l ../firmware
 
       - name: Upload firmware artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: firmware-binary
-          path: firmware.bin
-  
+          path: firmware
+
   test:
     runs-on: ubuntu-latest
+    needs: build-firmware
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # Opt into Node.js 24 now
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.11"
+      - name: Download firmware artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: firmware-binary
+          path: .
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    - name: Install Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable wget unzip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Remove old ChromeDriver
-      run: |
-        sudo rm -f /usr/bin/chromedriver
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable wget unzip
 
-    - name: Install matching ChromeDriver
-      run: |
-        CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-        wget -q "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip"
-        unzip chromedriver-linux64.zip
-        sudo mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
-        rm -rf chromedriver-linux64 chromedriver-linux64.zip
+      - name: Remove old ChromeDriver
+        run: sudo rm -f /usr/bin/chromedriver
 
-    - name: Run Robot Framework tests (headless)
-      run: |
-        robot --pythonpath . tests
+      - name: Install matching ChromeDriver
+        run: |
+          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+          wget -q "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip"
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
+          rm -rf chromedriver-linux64 chromedriver-linux64.zip
 
-    - name: Upload Robot Framework reports
-      uses: actions/upload-artifact@v4
-      with:
-        name: robot-reports
-        path: |
-          output.xml
-          report.html
-          log.html
+      - name: Run Robot Framework tests (headless)
+        run: |
+          robot --pythonpath . tests
+
+      - name: Upload Robot Framework reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-reports
+          path: |
+            output.xml
+            report.html
+            log.html
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Download reports artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: robot-reports
-        path: results
-    
-    # ✅ Generate chart-data.js from output.xml
-    - name: Generate chart data
-      run: |
-        python - <<'PYCODE'
-        import xml.etree.ElementTree as ET
-        root = ET.parse("results/output.xml").getroot()
-        stats = root.find("statistics").find("total").find("stat")
-        passed = int(stats.attrib["pass"])
-        failed = int(stats.attrib["fail"])
-        with open("results/chart-data.js", "w") as f:
-            f.write(f"const testResults = {{ passed: {passed}, failed: {failed} }};")
-        PYCODE
+      - name: Download reports artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: robot-reports
+          path: results
 
-    - name: Update history.json
-      run: |
-        python - <<'PYCODE'
-        import json, os, datetime, xml.etree.ElementTree as ET
+      - name: Generate chart data
+        run: |
+          python - <<'PYCODE'
+          import xml.etree.ElementTree as ET
+          root = ET.parse("results/output.xml").getroot()
+          stats = root.find("statistics").find("total").find("stat")
+          passed = int(stats.attrib["pass"])
+          failed = int(stats.attrib["fail"])
+          with open("results/chart-data.js", "w") as f:
+              f.write(f"const testResults = {{ passed: {passed}, failed: {failed} }};")
+          PYCODE
 
-        # Parse Robot Framework output.xml
-        root = ET.parse("results/output.xml").getroot()
-        stats = root.find("statistics").find("total").find("stat")
-        passed = int(stats.attrib["pass"])
-        failed = int(stats.attrib["fail"])
-        run_date = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d %H:%M:%S")
+      - name: Update history.json
+        run: |
+          python - <<'PYCODE'
+          import json, os, datetime, xml.etree.ElementTree as ET
+          root = ET.parse("results/output.xml").getroot()
+          stats = root.find("statistics").find("total").find("stat")
+          passed = int(stats.attrib["pass"])
+          failed = int(stats.attrib["fail"])
+          run_date = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d %H:%M:%S")
+          history_file = "results/history.json"
+          if os.path.exists(history_file):
+              with open(history_file) as f:
+                  history = json.load(f)
+          else:
+              history = []
+          history.append({"date": run_date, "passed": passed, "failed": failed})
+          history = history[-30:]
+          with open(history_file, "w") as f:
+              json.dump(history, f)
+          PYCODE
 
-        # Load existing history.json if present
-        history_file = "results/history.json"
-        if os.path.exists(history_file):
-            with open(history_file) as f:
-                history = json.load(f)
-        else:
-            history = []
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: results
 
-        # Append new run
-        history.append({"date": run_date, "passed": passed, "failed": failed})
-
-        # ✅ Keep only the last 30 runs
-        history = history[-30:]
-
-        # Save back
-        with open(history_file, "w") as f:
-            json.dump(history, f)
-        PYCODE
-      
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: results
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
