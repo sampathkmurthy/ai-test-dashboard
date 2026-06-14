@@ -12,6 +12,27 @@ permissions:
   id-token: write      # required for OIDC authentication
 
 jobs:
+  
+  build-firmware:
+    runs-on: ubuntu-latest   # or windows-latest if you want Windows build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install build tools
+        run: sudo apt-get update && sudo apt-get install -y build-essential
+
+      - name: Build firmware
+        run: |
+          cd firmware
+          gcc firmware.c hal_spi.c -o ../firmware   # produces 'firmware' binary
+
+      - name: Upload firmware artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: firmware-binary
+          path: firmware
+  
   test:
     runs-on: ubuntu-latest
     env:
