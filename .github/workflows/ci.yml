@@ -54,6 +54,16 @@ jobs:
           name: firmware-binary
           path: .
 
+      - name: Make firmware executable
+        run: |
+          if [ -f ./firmware.bin ]; then
+            chmod +x ./firmware.bin
+            ls -l ./firmware.bin
+          else
+            echo "firmware.bin not found"
+            exit 1
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
