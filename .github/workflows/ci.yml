@@ -28,6 +28,7 @@ jobs:
 
       - name: Verify firmware artifact
         run: |
+          cd firmware 
           file ../firmware.bin
           ls -l ../firmware.bin
 
